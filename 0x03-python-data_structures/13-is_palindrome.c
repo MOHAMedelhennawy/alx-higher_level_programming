@@ -1,24 +1,16 @@
 #include "lists.h"
-#include <stdio.h>
 int is_palindrome(listint_t **head)
 {
     listint_t *prev = NULL, *current = *head, *next = NULL, *ptr = *head;
-    int len = 0, i;
+    int size = 0;
+    bool flag;
 
     /*get the length of list*/
-    while (ptr)
-    {
-        len++;
-        ptr = ptr->next;
-    }
+    flag = check_size(&size, ptr);
 
-    i = len;
-    len = len / 2;
-    if (i % 2 != 0)
-        len++;
         
     /*revers the list*/
-    while (len--) {
+    while (size--) {
         /*Store next*/
         next = current->next;
  
@@ -29,7 +21,7 @@ int is_palindrome(listint_t **head)
         prev = current;
         current = next;
     }
-    if (i % 2 != 0)
+    if (flag)
         prev = prev->next;
    
     /*check if list is plindrome or not*/
@@ -41,4 +33,25 @@ int is_palindrome(listint_t **head)
         next = next->next;
     }   
     return 1;
+}
+
+bool check_size(int *size, listint_t *ptr)
+{
+    while (ptr)
+    {
+        (*size)++;
+        ptr = ptr->next;
+    }
+
+    if ((*size) % 2 != 0)
+    {
+        *size = ((*size) / 2) + 1;
+        return true;
+    }
+
+    else
+    {
+        *size = (*size) / 2;
+        return false;
+    }
 }
