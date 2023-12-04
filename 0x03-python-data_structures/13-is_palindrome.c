@@ -45,13 +45,13 @@ bool check_size(int *size, listint_t *ptr)
 
     if ((*size) % 2 != 0)
     {
-        *size = ((*size) / 2) + 1;
+        *size = (*size / 2) + 1;
         return true;
     }
 
     else
     {
-        *size = (*size) / 2;
+        *size = *size / 2;
         return false;
     }
 }
