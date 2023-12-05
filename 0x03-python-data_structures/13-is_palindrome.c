@@ -5,7 +5,7 @@ int is_palindrome(listint_t **head)
     int size = 0;
     bool flag;
 
-    /*get the length of list*/
+    /*get the size of list*/
     flag = check_size(&size, ptr);
 
         
