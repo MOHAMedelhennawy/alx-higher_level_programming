@@ -13,8 +13,15 @@ def roman_to_int(roman_string):
         "M": 1000
     }
 
+    my_list = ["I", "V", "X", "L", "C", "D", "M"]
+    last = roman_number[roman_string[0]]
     for i in roman_string:
         if i in roman_number.keys():
-                sum += roman_number[i]
 
-    return sum
+            if roman_number[i] <= last:
+                sum += roman_number[i]
+            else:
+                sum -= roman_number[i]
+        last = roman_number[i]
+
+    return abs(sum)
