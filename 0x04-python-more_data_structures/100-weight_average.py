@@ -2,6 +2,8 @@
 def weight_average(my_list=[]):
     sum1 = 0
     output = []
+    if my_list == []:
+        return 0
     for i in my_list:
         mul = i[0] * i[1]
         sum1 += mul
