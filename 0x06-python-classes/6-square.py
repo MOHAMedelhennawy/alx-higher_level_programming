@@ -3,29 +3,66 @@
 
 
 class Square:
-    """Define a Class Square"""
-
+    """ Square class defined
+        Attributes:
+            size (int): Size of square
+            position (tuple): position of space and new lines
+    """
     def __init__(self, size=0, position=(0, 0)):
+        """initializes
+        Args:
+            size (int): size
+            postion(tuple): postion
+        Returns:
+            None
+        """
+
         self.size = size
         self.position = position
+
     @property
     def size(self):
+        """
+        getter of size
+        Return:
+            Size of square
+        """
         return self.__size
 
     @size.setter
     def size(self, value):
+        """
+        Setter of size
+        Args:
+            value (int): size
+        Raises
+            TypeError: if size is not int
+            ValueError: size less than 0
+        Returns:
+            None
+        """
         if type(value) is not int:
             raise TypeError("size must be an integer")
         elif value < 0:
             raise ValueError("size must be >= 0")
         self.__size = value
-    
+
     @property
     def position(self):
+        """
+        get postion attribute
+        """
         return self.__position
-    
+
     @position.setter
     def position(self, value):
+        """
+            setter of position
+        Args:
+            value (tuple): position of the square in 2D space
+        Returns:
+            None
+        """
         if len(value) != 2 or type(value) != tuple:
             raise TypeError("position must be a tuple of 2 positive integers")
         if type(value[0]) != int or value[0] < 0:
@@ -35,9 +72,19 @@ class Square:
         self.__position = value
 
     def area(self):
+        """
+        get area
+        Return:
+            area (int)
+        """
         return (self.__size * self.__size)
 
     def my_print(self):
+        """
+        print a square
+        Returns:
+            None
+        """
         if self.__size == 0:
             print("")
             return
