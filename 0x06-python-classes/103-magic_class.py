@@ -8,10 +8,10 @@ class _MagicClass:
 
         if type(radius) is not int:
             if type(radius) is not float:
-                raise TypeError('radius must be a number')
-
-        self._MagicClass__radius = radius
-        return None
+                raise TypeError("radius must be a number")
+        else:
+            self._MagicClass__radius = radius
+            return None
 
     def area(self):
         radius = self._MagicClass__radius
