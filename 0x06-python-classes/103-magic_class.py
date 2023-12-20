@@ -6,7 +6,7 @@ import math
 class MagicClass:
     """magicclass that makes same bytecode as in the task"""
 
-    def __init__(self, radius):
+    def __init__(self, radius=0):
         """Initialize class"""
         self.__radius = 0
         if type(radius) is not int and type(radius) is not float:
