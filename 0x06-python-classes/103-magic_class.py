@@ -12,7 +12,7 @@ class MagicClass:
 
         else:
             self.__radius = radius
-        return self.__radius
+            return None
 
     def area(self):
         """area function calculates some weird stuff"""
