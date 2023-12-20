@@ -21,5 +21,5 @@ class _MagicClass:
         return result
 
     def circumference(self):
-        result = (math.pi * 2) * self._MagicClass__radius
+        result = 2 * math.pi * self._MagicClass__radius
         return result
