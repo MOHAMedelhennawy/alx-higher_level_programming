@@ -78,7 +78,8 @@ class SinglyLinkedList:
 
         else:
             currentNode = self.head
-            while currentNode.next_node is not None and currentNode.next_node.data < value:
+            while (currentNode.next_node is not None and
+                   currentNode.next_node.data < value):
                 currentNode = currentNode.next_node
             new_node.next_node = currentNode.next_node
             currentNode.next_node = new_node
