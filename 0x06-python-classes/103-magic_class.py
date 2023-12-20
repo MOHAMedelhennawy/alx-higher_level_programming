@@ -1,8 +1,10 @@
 #!/usr/bin/python3
+"""magic class definition"""
 import math
 
 class MagicClass:
     def __init__(self, radius):
+        """Initialize class"""
         self.__radius = 0
 
         if type(radius) is not int and type(radius) is not float:
@@ -11,10 +13,13 @@ class MagicClass:
         else:
             self.__radius = radius
 
+
     def area(self):
+        """area function calculates some weird stuff"""
         result = (self.__radius ** 2) * math.pi 
         return result
 
     def circumference(self):
+        """also this func calculate some weird stuff"""
         result = (2 * math.pi) * self.__radius
         return result
