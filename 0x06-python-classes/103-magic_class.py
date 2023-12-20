@@ -17,10 +17,8 @@ class MagicClass:
 
     def area(self):
         """area function calculates some weird stuff"""
-        result = (self.__radius ** 2) * math.pi
-        return result
+        return (self.__radius ** 2) * math.pi
 
     def circumference(self):
         """also this func calculate some weird stuff"""
-        result = (2 * math.pi) * self.__radius
-        return result
+        return (2 * math.pi) * self.__radius
