@@ -17,7 +17,6 @@ class Node:
         self.data = data
         self.next_node = next_node
 
-
     @property
     def data(self):
         """data getter
@@ -26,7 +25,6 @@ class Node:
         """
         return self.__data
 
-    
     @data.setter
     def data(self, value):
         """data setter
@@ -66,14 +64,13 @@ class SinglyLinkedList:
     def __init__(self):
         """Initialize linked list"""
         self.head = None
-    
+
     def sorted_insert(self, value):
         """insert node in coorect sorted position
         args:
             value (int): value for new node
         """
         new_node = Node(value, None)
-
 
         if self.head is None or value < self.head.data:
             new_node.next_node = self.head
