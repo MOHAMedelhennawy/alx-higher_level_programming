@@ -1,9 +1,9 @@
 #!/usr/bin/python3
-"""Define a Class"""
+"""Define size Class"""
 
 
 class Square:
-    """Define a Class Square"""
+    """Define size Class Square"""
 
     def __init__(self, size=0):
         self.__size = size
@@ -23,23 +23,20 @@ class Square:
     def area(self):
         return (self.__size * self.__size)
 
-    def __init__(self, a):
-        self.a = a
+    def __lt__(self, other):
+        return self.size < other.size
 
-    def __lt__(self, object2):
-        return self.a < object2.a
+    def __gt__(self, other):
+        return self.size > other.size
 
-    def __gt__(self, object2):
-        return self.a > object2.a
+    def __le__(self, other):
+        return self.size <= other.size
 
-    def __le__(self, object2):
-        return self.a <= object2.a
+    def __ge__(self, other):
+        return self.size >= other.size
 
-    def __ge__(self, object2):
-        return self.a >= object2.a
+    def __eq__(self, other):
+        return self.size == other.size
 
-    def __eq__(self, object2):
-        return self.a == object2.a
-
-    def __ne__(self, object2):
-        return self.a != object2.a
+    def __ne__(self, other):
+        return self.size != other.size
