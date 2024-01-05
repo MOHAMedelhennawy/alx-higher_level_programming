@@ -21,7 +21,7 @@ class Rectangle:
             height: representing object height.
 
         """
-        type(self).number_of_instances -= 1
+        Rectangle.number_of_instances += 1
         self.__width = width
         self.__height = height
 
@@ -111,7 +111,7 @@ class Rectangle:
     def __del__(self):
         """Print a msg after deleting a object,
         It is called after an objects garbage collection occurs"""
-        type(self).number_of_instances -= 1
+        Rectangle.number_of_instances -= 1
         print("Bye rectangle...")
 
     @staticmethod
@@ -134,7 +134,7 @@ class Rectangle:
 
         if rect_1.area() >= rect_2.area():
             return rect_1
-        elif rect_1.area() < rect_2.area():
+        else:
             return rect_2
 
     @classmethod
