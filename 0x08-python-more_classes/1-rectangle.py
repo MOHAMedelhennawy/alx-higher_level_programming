@@ -21,39 +21,41 @@ class Rectangle:
     """Defines the blueprint of a rectangle.
 
     Attribute:
-        width: the width of the rectangle object.
-        height: the height of the rectangle object.
+        width: An integer indicating the width of the rectangle object.
+        height: An integer indicating the height of the rectangle object.
     """
 
     def __init__(self, width=0, height=0):
         """An object constructor method.
+
         Initiatilizes Rectangle with width and height.
 
         Args:
-            width: representing object width.
-            height: representing object height.
-
+            width: An integer representing object width.
+                  Has a default value of 0.
+            height: An integer representing object height.
+                  Has a default value of 0.
         """
         self.__width = width
         self.__height = height
 
     @property
     def width(self):
-        """Gets the width object attribute
+        """Gets the width private attribute value.
 
-        Return:
+        Returns:
             The width private attribute
         """
         return self.__width
 
     @width.setter
     def width(self, value):
-        """Sets the width object attribute.
+        """Sets the width private attribute value.
 
         Validates the assignment of the width private attribute.
 
-        Args:
-            value: the value to set to width
+        Arg:
+            value: the value to be set
         """
         if not isinstance(value, int):
             raise TypeError("width must be an integer")
@@ -63,21 +65,21 @@ class Rectangle:
 
     @property
     def height(self):
-        """Gets the height object attribute
+        """Gets the height private attribute value.
 
-        Return:
+        Returns:
             The height private attribute
         """
         return self.__height
 
     @height.setter
     def height(self, value):
-        """Sets the height object attribute.
+        """Sets the height private attribute value.
 
         Validates the assignment of the height private attribute.
 
-        Args:
-            value: the value to set to height
+        Arg:
+            value: the value to be set
         """
         if not isinstance(value, int):
             raise TypeError("height must be an integer")
