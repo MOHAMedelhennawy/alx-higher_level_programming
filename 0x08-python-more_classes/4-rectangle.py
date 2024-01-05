@@ -9,6 +9,7 @@ class Rectangle:
         width: the width of the rectangle object.
         height: the height of the rectangle object.
     """
+
     def __init__(self, width=0, height=0):
         """An object constructor method.
         Initiatilizes Rectangle with width and height.
