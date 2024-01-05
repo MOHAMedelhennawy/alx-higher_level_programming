@@ -10,6 +10,7 @@ class Rectangle:
         height: the height of the rectangle object.
     """
     number_of_instances = 0
+    print_symbol = "#"
 
     def __init__(self, width=0, height=0):
         """An object constructor method.
@@ -96,16 +97,14 @@ class Rectangle:
         if self.__height == 0 or self.__width == 0:
             return ""
 
-        st = ""
-        for i in range(self.__height):
-            st += ("#" * self.__width) + '\n'
-        return st[:-1]
+        rectangle_str = (self.__width * str(self.print_symbol) + '\n') * self.__height
+        return rectangle_str[:-1]
 
     def __repr__(self):
         """Return a formal string representation of the rectangle
         to be able to recreate a new instance by using eval()"""
 
-        return "Rectangle({}, {})".format(self.__width, self.__height)
+        return("Rectangle({}, {})".format(self.__width, self.__height))
 
     def __del__(self):
         """Print a msg after deleting a object,
