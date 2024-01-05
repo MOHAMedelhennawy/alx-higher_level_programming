@@ -144,4 +144,4 @@ class Rectangle:
         Returns:
             The new Rectan
         """
-        return cls(5, 5)
+        return cls(size, size)
