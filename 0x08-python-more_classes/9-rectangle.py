@@ -21,7 +21,7 @@ class Rectangle:
             height: representing object height.
 
         """
-        Rectangle.number_of_instances += 1
+        type(self).number_of_instances -= 1
         self.__width = width
         self.__height = height
 
@@ -111,7 +111,7 @@ class Rectangle:
     def __del__(self):
         """Print a msg after deleting a object,
         It is called after an objects garbage collection occurs"""
-        Rectangle.number_of_instances -= 1
+        type(self).number_of_instances -= 1
         print("Bye rectangle...")
 
     @staticmethod
@@ -139,8 +139,12 @@ class Rectangle:
 
     @classmethod
     def square(cls, size=0):
-        """Return a new Rectangle with width and height equal to size.
+        """Creates a new Rectangle instance with width == height == size.
+
         Args:
-            size (int): The width and height of the new Rectangle.
+            size: size to set the new rectangle to
+
+        Returns:
+            The new Rectan
         """
-        return (cls(size, size))
+        return cls(size, size)
