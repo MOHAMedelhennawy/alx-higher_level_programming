@@ -102,9 +102,8 @@ class Rectangle:
         """Return a formal string representation of the rectangle
         to be able to recreate a new instance by using eval()"""
 
-        return("Rectangle({}, {})".format(self.__width, self.__height))
+        return "Rectangle({}, {})".format(self.__width, self.__height)
 
     def __del__(self):
-        """Print a msg after deleting a object,
-        It is called after an object’s garbage collection occurs"""
+        """Print a message for every deletion of a Rectangle."""
         print("Bye rectangle...")
