@@ -97,18 +97,20 @@ class Rectangle:
         if self.__height == 0 or self.__width == 0:
             return ""
 
-        rectangle_str = (self.__width * str(self.print_symbol) + '\n') * self.__height
+        rectangle_str = (
+            (self.__width * str(self.print_symbol) + '\n') * self.__height
+            )
         return rectangle_str[:-1]
 
     def __repr__(self):
         """Return a formal string representation of the rectangle
         to be able to recreate a new instance by using eval()"""
 
-        return("Rectangle({}, {})".format(self.__width, self.__height))
+        return "Rectangle({}, {})".format(self.__width, self.__height)
 
     def __del__(self):
         """Print a msg after deleting a object,
-        It is called after an object’s garbage collection occurs"""
+        It is called after an objects garbage collection occurs"""
         Rectangle.number_of_instances -= 1
         print("Bye rectangle...")
 
