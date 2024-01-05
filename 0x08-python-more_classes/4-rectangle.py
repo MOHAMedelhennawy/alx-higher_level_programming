@@ -3,12 +3,7 @@
 
 
 class Rectangle:
-    """Defines the blueprint of a rectangle.
-
-    Attribute:
-        width: the width of the rectangle object.
-        height: the height of the rectangle object.
-    """
+    """Represent a rectangle."""
 
     def __init__(self, width=0, height=0):
         """An object constructor method.
@@ -82,11 +77,10 @@ class Rectangle:
 
         Return: the perimeter of rectangle
         """
-        mul = 2
         if self.__height == 0 or self.__width == 0:
-            mul = 0
+            return 0
 
-        return (self.__height + self.__width) * mul
+        return (self.__height + self.__width) * 2
 
     def __str__(self):
         """Returns an informal and nicely printable string representation
