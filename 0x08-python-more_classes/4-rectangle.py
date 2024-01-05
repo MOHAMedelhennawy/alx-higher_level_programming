@@ -77,10 +77,11 @@ class Rectangle:
 
         Return: the perimeter of rectangle
         """
+        mul = 2
         if self.__height == 0 or self.__width == 0:
-            return 0
+            mul = 0
 
-        return (self.__height + self.__width) * 2
+        return (self.__height + self.__width) * mul
 
     def __str__(self):
         """Returns an informal and nicely printable string representation
@@ -97,4 +98,4 @@ class Rectangle:
         """Return a formal return a string representation of the rectangle
         to be able to recreate a new instance by using eval()"""
 
-        return("Rectangle({}, {})".format(self.__width, self.__height))
+        return "Rectangle({}, {})".format(self.__width, self.__height)
