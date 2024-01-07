@@ -1,0 +1,103 @@
+The ``0-add_integer test`` module
+=================================
+
+Using ``add_integer``
+---------------------
+
+This file is in restructured text format.
+First import ``add_integer`` from the ``0-add_integer`` module:
+
+importing the function from module:
+    >>> add_integer = __import__('0-add_integer').add_integer
+
+# Define test cases using doctest format
+Checking for module docstring:
+    >>> m = __import__('0-add_integer').__doc__
+    >>> len(m) > 1
+    True
+
+Checking add two positive integer:
+    >>> add_integer(5, 5)
+    10
+
+Checking add two negative integer:
+    >>> add_integer(-5, -5)
+    -10
+
+Checking add positive to negative:
+    >>> add_integer(-6, 5)
+    -1
+
+Checking for add positive float numbers:
+    >>> add_integer(2.4, 3.2)
+    5
+
+Checking for add negative float numbers:
+    >>> add_integer(-2.4, -3.2)
+    -5
+
+Checking for add negative float  to positive float:
+    >>> add_integer(-2.4, 3.2)
+    1
+
+Checking for add string to integer:
+    >>> add_integer("String", 5)
+    Traceback (most recent call last):
+        ...
+    TypeError: a must be an integer
+
+Checking for add integer to string:
+    >>> add_integer(5, "String")
+    Traceback (most recent call last):
+        ...
+    TypeError: b must be an integer
+
+Checking for add number to list:
+    >>> add_integer(4, [])
+    Traceback (most recent call last):
+        ...
+    TypeError: b must be an integer
+
+Checking for add list to number:
+    >>> add_integer([] ,4)
+    Traceback (most recent call last):
+        ...
+    TypeError: a must be an integer
+
+Checking for add bool with number:
+    >>> add_integer(True, 5)
+    Traceback (most recent call last):
+        ...
+    TypeError: a must be an integer
+
+Checking for add number with bool:
+    >>> add_integer(3, True)
+    Traceback (most recent call last):
+        ...
+    TypeError: b must be an integer
+
+Checking for passing one arg:
+    >>> add_integer(1)
+    99
+
+Checking for passing None:
+    >>> add_integer(None)
+    Traceback (most recent call last):
+        ...
+    TypeError: a must be an integer
+
+Checking for passing more than 2 args:
+    >>> add_integer(1, 2 ,3)
+    Traceback (most recent call last):
+        ...
+    TypeError: add_integer() takes from 1 to 2 positional arguments but 3 were given
+
+Checking for passing no thing:
+    >>> add_integer()
+    Traceback (most recent call last):
+        ...
+    TypeError: add_integer() missing 1 required positional argument: 'a'
+
+Checking for create a list:
+    >>> [add_integer(i, i ** 2) for i in range(6)]
+    [0, 2, 6, 12, 20, 30]

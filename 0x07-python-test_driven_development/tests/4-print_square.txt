@@ -1,0 +1,81 @@
+The "4-print_square" module
+============================
+
+Using "print_square"
+----------------------------
+
+First import "print_square" from "4-print_square" module:
+    >>> print_square = __import__('4-print_square').print_square
+
+# Define test cases using doctest format
+Checking for module docstring:
+    >>> m = __import__('4-print_square').print_square
+    >>> len(m) > 1
+    True
+
+Checking for passing 4:
+    >>> print_square(4)
+    ####
+    ####
+    ####
+    ####
+
+Checking for passing 10:
+    >>> print_square(10)
+    ##########
+    ##########
+    ##########
+    ##########
+    ##########
+    ##########
+    ##########
+    ##########
+    ##########
+    ##########
+
+
+Checking for passing 0:
+    >>> print_square(0)
+
+
+Checking for passing negative number:
+    >>> print_square(-1)
+    Traceback (most recent call last):
+        ...
+    ValueError: size must be >= 0
+
+Checking for passing string:
+    >>> print_square("String")
+    Traceback (most recent call last):
+        ...
+    TypeError: size must be an integer
+
+Checking for passing list:
+    >>> print_square(["Python is easy", 43, "C is fun"])
+    Traceback (most recent call last):
+        ...
+    TypeError: size must be an integer
+
+Checking for passign nothing:
+    >>> print_square()
+    Traceback (most recent call last):
+        ...
+    TypeError: print_square() missing 1 required positional argument: 'size'
+
+Checking for passing more args:
+    >>> print_square(3, 3)
+    Traceback (most recent call last):
+        ...
+    TypeError: print_square() takes 1 positional argument but 2 were given
+
+Checking for passing float less than 0:
+    >>> print_square(-0.4)
+    Traceback (most recent call last):
+        ...
+    TypeError: size must be an integer
+
+Checking for passign float number:
+    >>> print_square(4.3)
+    Traceback (most recent call last):
+        ...
+    TypeError: size must be an integer

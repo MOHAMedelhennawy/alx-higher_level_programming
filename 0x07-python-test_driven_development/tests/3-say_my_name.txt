@@ -1,0 +1,87 @@
+The "3-say_my_name" module
+============================
+
+Using "say_my_name"
+----------------------------
+
+First import "say_my_name" from "3-say_my_name" module:
+    >>> say_my_name = __import__('3-say_my_name').say_my_name
+
+# Define test cases using doctest format
+Checking for module docstring:
+    >>> m = __import__('3-say_my_name').__doc__
+    >>> len(m) > 1
+    True
+
+Checking for regular function:
+    >>> say_my_name("Walter", "White")
+    My name is Walter White
+
+Checking without passing last name:
+    >>> say_my_name("Walter")
+    My name is Walter 
+
+Checking for passing nothing:
+    >>> say_my_name()
+    Traceback (most recent call last):
+        ...
+    TypeError: say_my_name() missing 1 required positional argument: 'first_name'
+
+Checking for passing number to first name:
+    >>> say_my_name(3, "White")
+    Traceback (most recent call last):
+        ...
+    TypeError: first_name must be a string
+
+Checking for passing number to last name:
+    >>> say_my_name("Walter", 2)
+    Traceback (most recent call last):
+        ...
+    TypeError: last_name must be a string
+
+Checking for passing list to first name:
+    >>> say_my_name(["Walter", "White", "Meth"], "last")
+    Traceback (most recent call last):
+        ...
+    TypeError: first_name must be a string
+
+Checking for passing list to last name:
+    >>> say_my_name("first", ["Walter", "White", "Meth"])
+    Traceback (most recent call last):
+        ...
+    TypeError: last_name must be a string
+
+Checking for passing bool to last name:
+    >>> say_my_name("Walter", False)
+    Traceback (most recent call last):
+        ...
+    TypeError: last_name must be a string
+
+Checking for passing boll to last first:
+    >>> say_my_name(True)
+    Traceback (most recent call last):
+        ...
+    TypeError: first_name must be a string
+
+Checking for passing None to first name:
+    >>> say_my_name(None)
+    Traceback (most recent call last):
+        ...
+    TypeError: first_name must be a string
+
+Checking for passing None to last name:
+    >>> say_my_name("Walter", None)
+    Traceback (most recent call last):
+        ...
+    TypeError: last_name must be a string
+
+Checking for passing both None:
+    >>> say_my_name(None, None)
+    Traceback (most recent call last):
+        ...
+    TypeError: first_name must be a string
+
+
+Checking for passing empty string in first name:
+    >>> say_my_name("")
+    My name is  
