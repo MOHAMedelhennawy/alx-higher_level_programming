@@ -4,7 +4,7 @@ Creates a square class.
 """
 
 
-Rectangle = __import__("8-rectangle").Rectangle
+Rectangle = __import__("9-rectangle").Rectangle
 
 
 class Square(Rectangle):
@@ -18,10 +18,9 @@ class Square(Rectangle):
         """Initializes an instance.
 
         Args:
-            - size: value of both width and height
+            - size: value of square
         """
         self.integer_validator("size", size)
-        super().__init__(size, size)
         self.__size = size
 
     def area(self):
