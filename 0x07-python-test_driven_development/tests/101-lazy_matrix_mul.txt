@@ -100,7 +100,7 @@ equal to the column count in ``m_b``), a ValueError is raised.
     ... ]
     >>> print(matrix_mul(m_a, m_b))
     Traceback (most recent call last):
-    ValueError: m_a and m_b can't be multiplied
+    ValueError: shapes (2,2) and (3,2) not aligned: 2 (dim 1) != 3 (dim 0)
 
 
 The parameters ``m_a`` and ``m_b`` cannot be empty. Otherwise, a ValueError
@@ -110,19 +110,18 @@ is raised.
 
     >>> print(matrix_mul([], [[1, 2]]))
     Traceback (most recent call last):
-    ValueError: m_a can't be empty
+    ValueError: shapes (0,) and (1,2) not aligned: 0 (dim 0) != 1 (dim 0)
 
 ::
 
     >>> print(matrix_mul([[1, 2]], [[]]))
     Traceback (most recent call last):
-    ValueError: m_b can't be empty
+    ValueError: shapes (1,2) and (1,0) not aligned: 2 (dim 1) != 1 (dim 0)
 
 ::
 
     >>> print(matrix_mul([[]], []))
-    Traceback (most recent call last):
-    ValueError: m_a can't be empty
+    [0.]
 
 Invalid Matrices
 ================
@@ -134,25 +133,25 @@ not a list, a TypeError is raised.
 
     >>> print(matrix_mul("not a list", [[1, 2]]))
     Traceback (most recent call last):
-    TypeError: m_a must be a list
+    numpy.core._exceptions._UFuncNoLoopError: ufunc 'multiply' did not contain a loop with signature matching types (dtype('<U10'), dtype('<U1')) -> None
 
 ::
 
     >>> print(matrix_mul([[1, 2]], "also not a list"))
     Traceback (most recent call last):
-    TypeError: m_b must be a list
+    numpy.core._exceptions._UFuncNoLoopError: ufunc 'multiply' did not contain a loop with signature matching types (dtype('<U1'), dtype('<U15')) -> None
 
 ::
 
     >>> print(matrix_mul("not a list", "also not a list"))
     Traceback (most recent call last):
-    TypeError: m_a must be a list
+    numpy.core._exceptions._UFuncNoLoopError: ufunc 'multiply' did not contain a loop with signature matching types (dtype('<U10'), dtype('<U15')) -> None
 
 ::
 
     >>> print(matrix_mul(None, None))
     Traceback (most recent call last):
-    TypeError: m_a must be a list
+    TypeError: unsupported operand type(s) for *: 'NoneType' and 'NoneType'
 
 Not just any list - they *must* be lists of lists!
 
@@ -160,19 +159,17 @@ Not just any list - they *must* be lists of lists!
 
     >>> print(matrix_mul([1, 2], [[3, 4]]))
     Traceback (most recent call last):
-    TypeError: m_a must be a list of lists
+    ValueError: shapes (2,) and (1,2) not aligned: 2 (dim 0) != 1 (dim 0)
 
 ::
 
     >>> print(matrix_mul([[1, 2]], [3, 4]))
-    Traceback (most recent call last):
-    TypeError: m_b must be a list of lists
+    [11]
 
 ::
 
     >>> print(matrix_mul([1, 2], [3, 4]))
-    Traceback (most recent call last):
-    TypeError: m_a must be a list of lists
+    11
 
 And not just any list of lists - they *must* be lists of lists containing
 integers or floats!
@@ -181,19 +178,19 @@ integers or floats!
 
     >>> print(matrix_mul([[1, "non-number"]], [[3, 4]]))
     Traceback (most recent call last):
-    TypeError: m_a should contain only integers or floats
+    ValueError: shapes (1,2) and (1,2) not aligned: 2 (dim 1) != 1 (dim 0)
 
 ::
 
     >>> print(matrix_mul([[1, 2]], [[{"a": 1}, 8.8]]))
     Traceback (most recent call last):
-    TypeError: m_b should contain only integers or floats
+    ValueError: shapes (1,2) and (1,2) not aligned: 2 (dim 1) != 1 (dim 0)
 
 ::
 
     >>> print(matrix_mul([[1, "non-number"]], [[{"a": 1}, 8.8]]))
     Traceback (most recent call last):
-    TypeError: m_a should contain only integers or floats
+    ValueError: shapes (1,2) and (1,2) not aligned: 2 (dim 1) != 1 (dim 0)
 
 Finally, the length of all rows in matrices ``m_a`` and ``m_b`` should be
 equivalent. Otherwise, a TypeError is raised.
@@ -210,7 +207,7 @@ equivalent. Otherwise, a TypeError is raised.
     ... ]
     >>> print(matrix_mul(m_a, m_b))
     Traceback (most recent call last):
-    TypeError: each row of m_a must should be of the same size
+    ValueError: setting an array element with a sequence. The requested array has an inhomogeneous shape after 1 dimensions. The detected shape was (2,) + inhomogeneous part.
 
 ::
 
@@ -224,7 +221,7 @@ equivalent. Otherwise, a TypeError is raised.
     ... ]
     >>> print(matrix_mul(m_a, m_b))
     Traceback (most recent call last):
-    TypeError: each row of m_b must should be of the same size
+    ValueError: setting an array element with a sequence. The requested array has an inhomogeneous shape after 1 dimensions. The detected shape was (2,) + inhomogeneous part.
 
 ::
 
@@ -235,4 +232,4 @@ equivalent. Otherwise, a TypeError is raised.
     >>> m_b = m_a
     >>> print(matrix_mul(m_a, m_b))
     Traceback (most recent call last):
-    TypeError: each row of m_a must should be of the same size
+    ValueError: setting an array element with a sequence. The requested array has an inhomogeneous shape after 1 dimensions. The detected shape was (2,) + inhomogeneous part.
