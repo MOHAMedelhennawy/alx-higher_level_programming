@@ -60,9 +60,11 @@ Test append a list to list:
         ...
     TypeError: '<' not supported between instances of 'list' and 'int'
 
-Checking that MyList inherits from list:
-	 >>> issubclass(MyList, list)
-	 True
+Checking for too many arguments:
+	 >>> l.print_sorted(1)
+	 Traceback (most recent call last):
+	 ...
+	 TypeError: print_sorted() takes 1 positional argument but 2 were given
 
 Test to append list with string:
     >>> my_list = MyList()
