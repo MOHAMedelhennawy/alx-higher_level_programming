@@ -2,7 +2,7 @@
 
 
 class MyList(list):
-    """Subclassing from list itself"""
+    """Subclassing frOm list itself"""
 
     def print_sorted(self):
         """Print_sorted to print sorted list"""
