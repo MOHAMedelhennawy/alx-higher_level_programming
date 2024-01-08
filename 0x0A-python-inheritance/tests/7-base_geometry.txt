@@ -12,41 +12,50 @@ First import the module:
 
 Cases:
     >>> bg = BaseGeometry()
+    >>> bg.area()
+    Traceback (most recent call last):
+    	      ...
+    Exception: area() is not implemented
 
     >>> bg.integer_validator("width", 89)
 
     >>> bg.integer_validator("my_int", 12)
 
 Checking for passing string to value:
-
+    >>> bg = BaseGeometry()
     >>> bg.integer_validator("name", "John")
     Traceback (most recent call last):
         ...
     TypeError: name must be an integer
 
 Checking for passing 0:
+    >>> bg = BaseGeometry()
     >>> bg.integer_validator("age", 0)
     Traceback (most recent call last):
         ...
     ValueError: age must be greater than 0
 
 Checking for passing negative number:
+    >>> bg = BaseGeometry()
     >>> bg.integer_validator("distance", -4)
     Traceback (most recent call last):
         ...
     ValueError: distance must be greater than 0
 
 Checking for passing nothing:
+    >>> bg = BaseGeometry()
     >>> bg.integer_validator()
     Traceback (most recent call last):
         ...
     TypeError: BaseGeometry.integer_validator() missing 2 required positional arguments: 'name' and 'value'
 
 Checking for passing more arguments:
+    >>> bg = BaseGeometry()
     >>> bg.integer_validator("distance", -4, 5)
     Traceback (most recent call last):
         ...
     TypeError: BaseGeometry.integer_validator() takes 3 positional arguments but 4 were given
 
 Checking for passing string to value:
+    >>> bg = BaseGeometry()
     >>> bg.integer_validator(1, 12)
