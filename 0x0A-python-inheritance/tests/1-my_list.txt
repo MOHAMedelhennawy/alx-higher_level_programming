@@ -69,6 +69,10 @@ Test to append list with string:
     >>> my_list.append("-5")
     >>> print(my_list)
     ['-1', [4, 1, -1, 2], '-2', '3', '-5']
+    >>> my_list.print_sorted()
+    Traceback (most recent call last):
+        ...
+    TypeError: '<' not supported between instances of 'list' and 'str'
 
 Test empty list:
     >>> my_list = MyList()
@@ -76,3 +80,11 @@ Test empty list:
     []
     >>> my_list.print_sorted()
     []
+
+Test for append a string:
+    >>> my_list = MyList()
+    >>> my_list.append("This string")
+    >>> print(my_list)
+    ['This string']
+    >>> my_list.print_sorted()
+    ['This string']
