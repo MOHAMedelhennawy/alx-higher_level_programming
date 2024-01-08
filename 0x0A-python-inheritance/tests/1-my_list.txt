@@ -1,8 +1,17 @@
+The "1-my_list" module
+============================
 
+Using "my_list"
+----------------------------
 
-
-First import a module
+First import "my_list" from the "1-my_list" module:
     >>> MyList = __import__('1-my_list').MyList
+
+
+Checking for module docstring:
+    >>> m = __import__('1-my_list').__doc__
+    >>> len(m) > 1
+    True
 
 Test using example in the task:
     >>> my_list = MyList()
