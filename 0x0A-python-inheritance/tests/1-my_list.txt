@@ -1,90 +1,87 @@
-The "1-my_list" module
-============================
+The ``1-my_list`` module
+======================
 
-Using "my_list"
-----------------------------
+Using ``MyList``
+-------------------
 
-First import "my_list" from the "1-my_list" module:
-    >>> MyList = __import__('1-my_list').MyList
-
+Importing the function from the module:
+        >>> MyList = __import__("1-my_list").MyList
 
 Checking for module docstring:
-    >>> m = __import__('1-my_list').__doc__
-    >>> len(m) > 1
-    True
+         >>> m = __import__("1-my_list").__doc__
+         >>> len(m) > 1
+         True
 
-Test using example in the task:
-    >>> my_list = MyList()
-    >>> my_list.append(1)
-    >>> my_list.append(4)
-    >>> my_list.append(2)
-    >>> my_list.append(3)
-    >>> my_list.append(5)
-    >>> print(my_list)
-    [1, 4, 2, 3, 5]
-    >>> my_list.print_sorted()
-    [1, 2, 3, 4, 5]
+Checking for class docstring:
+         >>> c = __import__("1-my_list").MyList.__doc__
+         >>> len(c) > 1
+         True
 
-Test negative numbers:
-    >>> my_list = MyList()
-    >>> my_list.append(-1)
-    >>> my_list.append(4)
-    >>> my_list.append(-2)
-    >>> my_list.append(3)
-    >>> my_list.append(-5)
-    >>> print(my_list)
-    [-1, 4, -2, 3, -5]
-    >>> my_list.print_sorted()
-    [-5, -2, -1, 3, 4]
+Checking for method docstring:
+	 >>> mod = __import__("1-my_list").MyList.print_sorted.__doc__
+	 >>> len(mod) > 1
+	 True
 
-Test list and string:
-    >>> my_list = MyList()
-    >>> my_list.append("-1")
-    >>> my_list.append(4)
-    >>> my_list.append("a")
-    >>> my_list.append(3)
-    >>> my_list.append("string")
+Checking that MyList inherits from list:
+	 >>> issubclass(MyList, list)
+	 True
 
+Checking for empty list:
+	 >>> l = MyList()
+	 >>> l.print_sorted()
+	 []
 
-Test append a list to list:
-    >>> my_list = MyList()
-    >>> my_list.append(-1)
-    >>> my_list.append([4, 1, -1, 2])
-    >>> my_list.append(-2)
-    >>> my_list.append(3)
-    >>> my_list.append(-5)
-    >>> print(my_list)
-    [-1, [4, 1, -1, 2], -2, 3, -5]
-    >>> my_list.print_sorted()
-    Traceback (most recent call last):
-        ...
-    TypeError: '<' not supported between instances of 'list' and 'int'
+Checking that appendng works:
+	 >>> l.append(1)
+	 >>> l.append(2)
+	 >>> l.append(3)
+	 >>> l.append(4)
+	 >>> print(l)
+	 [1, 2, 3, 4]
 
-Test to append list with string:
-    >>> my_list = MyList()
-    >>> my_list.append("-1")
-    >>> my_list.append([4, 1, -1, 2])
-    >>> my_list.append("-2")
-    >>> my_list.append("3")
-    >>> my_list.append("-5")
-    >>> print(my_list)
-    ['-1', [4, 1, -1, 2], '-2', '3', '-5']
-    >>> my_list.print_sorted()
-    Traceback (most recent call last):
-        ...
-    TypeError: '<' not supported between instances of 'list' and 'str'
+Checking for list already in correct order:
+	 >>> l.print_sorted()
+	 [1, 2, 3, 4]
 
-Test empty list:
-    >>> my_list = MyList()
-    >>> print(my_list)
-    []
-    >>> my_list.print_sorted()
-    []
+Checking for reversed order list:
+	 >>> l = MyList()
+	 >>> l.append(4)
+	 >>> l.append(3)
+	 >>> l.append(2)
+	 >>> l.append(1)
+	 >>> print(l)
+	 [4, 3, 2, 1]
+	 >>> l.print_sorted()
+	 [1, 2, 3, 4]
+	 >>> print(l)
+	 [4, 3, 2, 1]
 
-Test for append a string:
-    >>> my_list = MyList()
-    >>> my_list.append("This string")
-    >>> print(my_list)
-    ['This string']
-    >>> my_list.print_sorted()
-    ['This string']
+Checking for one negative number:
+	 >>> l.append(-1)
+	 >>> l.append(5)
+	 >>> print(l)
+	 [4, 3, 2, 1, -1, 5]
+	 >>> l.print_sorted()
+	 [-1, 1, 2, 3, 4, 5]
+	 >>> print(l)
+	 [4, 3, 2, 1, -1, 5]
+
+Checking for all negative numbers:
+	 >>> l = MyList()
+	 >>> l.append(-10)
+	 >>> l.append(-1)
+	 >>> l.append(-7)
+	 >>> l.append(-2)
+	 >>> l.append(-8)
+	 >>> print(l)
+	 [-10, -1, -7, -2, -8]
+	 >>> l.print_sorted()
+	 [-10, -8, -7, -2, -1]
+	 >>> print(l)
+         [-10, -1, -7, -2, -8]
+
+Checking for too many arguments:
+	 >>> l.print_sorted(1)
+	 Traceback (most recent call last):
+	 ...
+	 TypeError: print_sorted() takes 1 positional argument but 2 were given
