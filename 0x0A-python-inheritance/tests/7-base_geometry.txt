@@ -20,6 +20,12 @@ Cases:
     >>> bg = BaseGeometry()
     >>> bg.integer_validator("my_int", 12)
 
+    >>> bg = BaseGeometry()
+    >>> bg.integer_validator(True, 89)
+
+    >>> bg = BaseGeometry()
+    >>> bg.integer_validator([True, 5, 3], 89)
+
 Checking for passing string to value:
     >>> bg = BaseGeometry()
     >>> bg.integer_validator("name", "John")
