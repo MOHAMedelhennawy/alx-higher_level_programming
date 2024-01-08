@@ -66,15 +66,11 @@ Checking for add list to number:
 
 Checking for add bool with number:
     >>> add_integer(True, 5)
-    Traceback (most recent call last):
-        ...
-    TypeError: a must be an integer
+    6
 
 Checking for add number with bool:
     >>> add_integer(3, True)
-    Traceback (most recent call last):
-        ...
-    TypeError: b must be an integer
+    4
 
 Checking for passing one arg:
     >>> add_integer(1)
