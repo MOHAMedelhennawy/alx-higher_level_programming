@@ -28,6 +28,14 @@ Test negative numbers:
     >>> my_list.print_sorted()
     [-5, -2, -1, 3, 4]
 
+Test list and string:
+    >>> my_list = MyList()
+    >>> my_list.append("-1")
+    >>> my_list.append(4)
+    >>> my_list.append("a")
+    >>> my_list.append(3)
+    >>> my_list.append("string")
+
 
 Test append a list to list:
     >>> my_list = MyList()
