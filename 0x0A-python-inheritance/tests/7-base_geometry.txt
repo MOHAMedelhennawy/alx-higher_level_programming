@@ -1,14 +1,11 @@
-The "7-base_geometry" module
-============================
+The ``7-base_geometry`` module
+==============================
 
-Using "base_geometry"
-----------------------------
+Using ``BaseGeometry``
+----------------------
 
-
-First import the module:
+Importing class from the module:
     >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
-
-
 
 Cases:
     >>> bg = BaseGeometry()
@@ -17,13 +14,33 @@ Cases:
     	      ...
     Exception: area() is not implemented
 
+    >>> bg = BaseGeometry()
     >>> bg.integer_validator("width", 89)
 
+    >>> bg = BaseGeometry()
     >>> bg.integer_validator("my_int", 12)
 
 Checking for passing string to value:
     >>> bg = BaseGeometry()
     >>> bg.integer_validator("name", "John")
+    Traceback (most recent call last):
+        ...
+    TypeError: name must be an integer
+
+    >>> bg = BaseGeometry()
+    >>> bg.integer_validator("name", True)
+    Traceback (most recent call last):
+        ...
+    TypeError: name must be an integer
+
+    >>> bg = BaseGeometry()
+    >>> bg.integer_validator("name", {True:4})
+    Traceback (most recent call last):
+        ...
+    TypeError: name must be an integer
+
+    >>> bg = BaseGeometry()
+    >>> bg.integer_validator("name", (4, 4))
     Traceback (most recent call last):
         ...
     TypeError: name must be an integer
