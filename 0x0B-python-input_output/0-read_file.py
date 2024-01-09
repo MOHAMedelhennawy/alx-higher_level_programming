@@ -13,4 +13,5 @@ def read_file(filename=""):
     """
 
     with open(filename) as file:
-        print(file.read())
+        text = file.read()
+        print(text)
