@@ -7,89 +7,93 @@ Using ``add_integer``
 This file is in restructured text format.
 First import ``add_integer`` from the ``0-add_integer`` module:
 
+importing the function from module:
     >>> add_integer = __import__('0-add_integer').add_integer
 
+# Define test cases using doctest format
 Checking for module docstring:
-
-    >>> m = __import__("0-add_integer").__doc__
-    >>> len(m) > 1 
+    >>> m = __import__('0-add_integer').__doc__
+    >>> len(m) > 1
     True
 
-Checking for function docstring:
+Checking add two positive integer:
+    >>> add_integer(5, 5)
+    10
 
-    >>> f = __import__("0-add_integer").add_integer.__doc__
-    >>> len(f) > 1
-    True
-         
-Basic usage:
+Checking add two negative integer:
+    >>> add_integer(-5, -5)
+    -10
 
-    >>> add_integer(1, 2)
-    3
-    
-Test int argument:
+Checking add positive to negative:
+    >>> add_integer(-6, 5)
+    -1
 
-    >>> add_integer(2)
-    100
+Checking for add positive float numbers:
+    >>> add_integer(2.4, 3.2)
+    5
 
-Test int argument and check default second:
+Checking for add negative float numbers:
+    >>> add_integer(-2.4, -3.2)
+    -5
 
-    >>> add_integer(0)
-    98
+Checking for add negative float  to positive float:
+    >>> add_integer(-2.4, 3.2)
+    1
 
-Checking positive with negative:
-
-    >>> add_integer(2, -4)
-    -2 
-
-Checking negative with positive:
-
-    >>> add_integer(-6, 8)
-    2
-
-Checking addition over multiple values:
-
-    >>> [add_integer(i, i ** 2) for i in range(6)]
-    [0, 2, 6, 12, 20, 30]
-
-Float and negative input:
-
-    >>> add_integer(100.3, -2)
-    98
-
-Float overflow:
-
-    >>> add_integer(1500.5)
-    1598
-
-Float NaN:
-
-    >>> add_integer(float('NaN'))
+Checking for add string to integer:
+    >>> add_integer("String", 5)
     Traceback (most recent call last):
-    ...
-    ValueError: cannot convert float NaN to integer
+        ...
+    TypeError: a must be an integer
 
-String input:
-
-    >>> add_integer(4, "School")
+Checking for add integer to string:
+    >>> add_integer(5, "String")
     Traceback (most recent call last):
-    ...
+        ...
     TypeError: b must be an integer
 
-None input:
+Checking for add number to list:
+    >>> add_integer(4, [])
+    Traceback (most recent call last):
+        ...
+    TypeError: b must be an integer
 
+Checking for add list to number:
+    >>> add_integer([] ,4)
+    Traceback (most recent call last):
+        ...
+    TypeError: a must be an integer
+
+Checking for add bool with number:
+    >>> add_integer(True, 5)
+    6
+
+Checking for add number with bool:
+    >>> add_integer(3, True)
+    4
+
+Checking for passing one arg:
+    >>> add_integer(1)
+    99
+
+Checking for passing None:
     >>> add_integer(None)
     Traceback (most recent call last):
-    ...
+        ...
     TypeError: a must be an integer
 
-Double negative float input:
-
-    >>> add_integer(-100.5, -10.8)
-    -110
-
-Double string input:
-
-    >>> add_integer("holberton", "school")
+Checking for passing more than 2 args:
+    >>> add_integer(1, 2 ,3)
     Traceback (most recent call last):
-    ...
-    TypeError: a must be an integer
+        ...
+    TypeError: add_integer() takes from 1 to 2 positional arguments but 3 were given
+
+Checking for passing no thing:
+    >>> add_integer()
+    Traceback (most recent call last):
+        ...
+    TypeError: add_integer() missing 1 required positional argument: 'a'
+
+Checking for create a list:
+    >>> [add_integer(i, i ** 2) for i in range(6)]
+    [0, 2, 6, 12, 20, 30]
