@@ -9,7 +9,13 @@ def add_attribute(obj, name, user_name):
         - obj: The object of the class
         - name: The attribute to adding
         - use_name: The value of name attribute
-    """
 
-    if setattr(obj, name, user_name) is None:
+    Return: New attribute if True, otherwise raise TypeError
+    """
+    if (hasattr(obj, '__dict__') or
+        (hasattr(type(obj), '__slots__')
+            and not isinstance(type(obj).__slots__, property))):
+
+        setattr(obj, name, user_name)
+    else:
         raise TypeError("can't add new attribute")
