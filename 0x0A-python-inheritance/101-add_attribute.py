@@ -11,4 +11,6 @@ def add_attribute(obj, name, user_name):
         - use_name: The value of name attribute
     """
 
+    if name is None:
+        raise TypeError("can't add new attribute")
     setattr(obj, name, user_name)
