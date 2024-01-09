@@ -1,21 +1,21 @@
 #!/usr/bin/python3
-"""Function to add attribute to class"""
+"""Module 101-add_attribute.
+Checks if an attribute can be added to an object.
+"""
 
 
-def add_attribute(obj, name, user_name):
-    """Adding attribute to class.
+def add_attribute(an_obj, an_attr, a_value):
+    """Checks if an_attr of value a_value can be added to an_obj.
 
     Args:
-        - obj: The object of the class
-        - name: The attribute to adding
-        - use_name: The value of name attribute
-
-    Return: New attribute if True, otherwise raise TypeError
+        - an_obj: object to add the attribute to
+        - an_attr: name of the attribute
+        - a_value: value of the attribute to add
     """
-    if (hasattr(obj, '__dict__') or
-        (hasattr(type(obj), '__slots__')
-            and not isinstance(type(obj).__slots__, property))):
 
-        setattr(obj, name, user_name)
-    else:
+    if not hasattr(an_obj, '__slots__') and not hasattr(an_obj, '__dict__'):
         raise TypeError("can't add new attribute")
+    if hasattr(an_obj, '__slots__') and not hasattr(an_obj, an_attr):
+        raise TypeError("can't add new attribute")
+
+    setattr(an_obj, an_attr, a_value)
