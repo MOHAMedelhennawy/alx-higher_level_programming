@@ -13,7 +13,7 @@ def read_file(filename=""):
     """
 
     with open(filename) as file:
-        print(file.read())  
+        print(file.read(), end="")  
     # 1- is no need to call file.close()
     # 2- but using the with statement makes the code
     #    compact and much more readable
