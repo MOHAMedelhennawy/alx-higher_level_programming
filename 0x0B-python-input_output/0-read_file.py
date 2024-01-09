@@ -12,6 +12,6 @@ def read_file(filename=""):
         - filename: name of the file
     """
 
-    with open(filename) as file:
-        text = file.read()
-        print(text, end="")  
+    with open(filename) as f:
+        read_text = f.read()
+        print(read_text, end="")
