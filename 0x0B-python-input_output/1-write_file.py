@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+"""Module 1-write_file.
+Writes in a text file.
+"""
 
 
 def write_file(filename="", text=""):
