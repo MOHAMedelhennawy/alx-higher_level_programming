@@ -12,7 +12,7 @@ def add_attribute(obj, name, user_name):
 
     Return: New attribute if True, otherwise raise TypeError
     """
-    if (hasattr(obj, '__dict__') or
+    if ( not hasattr(obj, '__dict__') or
         (hasattr(type(obj), '__slots__')
             and not isinstance(type(obj).__slots__, property))):
 
