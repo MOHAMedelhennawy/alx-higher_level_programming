@@ -12,8 +12,9 @@ def read_file(filename=""):
         - filename: name of the file
     """
 
-    with open(filename) as file:
-        print(file.read(), end="")
+    with open(filename) as file_obj:
+        contant = file_obj.read()
+        print(contant)
 
 
     # 1- is no need to call file.close()
