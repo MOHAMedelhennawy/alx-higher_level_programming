@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!usr/bin/python3
 """Module 2-append_write.
 Appends a string at the end of a text file.
 """
@@ -12,5 +12,5 @@ def append_write(filename="", text=""):
     Returns: the number of characters added
     """
 
-    with open(filename, 'a+') as f:
-        return f.write(text)
+    with open(filename, "a") as file_obj:
+        return file_obj.write(text)
