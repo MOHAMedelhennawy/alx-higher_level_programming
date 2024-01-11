@@ -19,5 +19,5 @@ def write_file(filename="", text=""):
     - IOError: If there is an issue with opening or writing to the file.
     """
 
-    with open(filename, 'w') as file:
-        return file.write(text)
+    with open(filename, "w") as file_obj:
+        return file_obj.write(text)
