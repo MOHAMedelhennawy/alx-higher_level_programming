@@ -8,10 +8,12 @@ file_name = "add_item.json"
 my_list.pop(0)
 
 
-try:
-    load_from_json_file(file_name)
-except:
+with open(file_name) as file_obj:
+    size = len(file_obj.read())
+
+if size == 0:
     save_to_json_file([], file_name)
+
 else:
     data = load_from_json_file(file_name)
     save_to_json_file(data + my_list, file_name)
