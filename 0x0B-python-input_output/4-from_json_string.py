@@ -9,7 +9,7 @@ def from_json_string(my_str):
 
     Args:
         my_str: JSON representation
-    
+
     Return: python representation
     """
 
