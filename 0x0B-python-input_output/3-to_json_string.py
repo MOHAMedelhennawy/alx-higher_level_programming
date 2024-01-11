@@ -13,7 +13,3 @@ def to_json_string(my_obj):
     """
 
     return json.dumps(my_obj)
-# If you have python obj and want to convert to
-# json opj, you use json.dumbs(),
-# It takes the Python object as input and
-# returns a JSON string. and it's call Encoding (Serializing) JSON
