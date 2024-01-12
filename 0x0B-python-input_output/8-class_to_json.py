@@ -3,8 +3,6 @@
 with simple data structure
 """
 
-import json
-
 
 def class_to_json(obj):
     """Return description
