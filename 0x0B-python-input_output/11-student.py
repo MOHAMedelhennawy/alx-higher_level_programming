@@ -33,4 +33,4 @@ class Student:
         Student_data = {}
         for key, value in json.items():
             Student_data.update({key: value})
-            self.__dict__ =  Student_data
+            self.__dict__ = Student_data
