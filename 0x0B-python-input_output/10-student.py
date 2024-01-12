@@ -23,12 +23,6 @@ class Student:
         """Return  a dictionary representation
         of a Student instance"""
         Student_data = self.__dict__
-        if type(attrs) == list:
-            filtered_data = (
-                {
-                    key: value
-                    for key, value in Student_data.items() if key in attrs
-                }
-                )
-            return filtered_data
-        return Student_data
+
+        return {key: value for key, value in Student_data.items()
+                if attrs is None or key in attrs}
