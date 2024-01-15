@@ -18,7 +18,6 @@ class TestSquare(unittest.TestCase):
         """ Runs for each test """
 
         Base._Base__nb_objects = 0
-        self.new_base = Base(id=1)
 
     def test_square_id(self):
         """Test id of square"""
