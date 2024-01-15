@@ -75,17 +75,17 @@ class TestRectangle(unittest.TestCase):
     def test_Rectangle_TypeError_Exception(self):
         """Test TypeError exception mgs of Rectangle attributes"""
 
-        with self.assertRaises(TypeError) as x:
+        with self.assertRaises(TypeError) as e:
             r1 = Rectangle(5)
         self.assertEqual(
             "Rectangle.__init__() missing 1 required " +
             "positional argument: 'height'", str(
-                x.exception))
+                e.exception))
         s = ("Rectangle.__init__() missing 2 required positional" +
              " arguments: 'width' and 'height'")
-        with self.assertRaises(TypeError) as x:
+        with self.assertRaises(TypeError) as e:
             r2 = Rectangle()
-        self.assertEqual(s, str(x.exception))
+        self.assertEqual(s, str(e.exception))
 
         with self.assertRaises(TypeError) as e:
             r3 = Rectangle("1", 3)
