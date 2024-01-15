@@ -2,8 +2,8 @@
 """Module square.
 Create a square class, inheriting from Rectangle.
 """
+from models.base import Base
 from models.rectangle import Rectangle
-
 
 class Square(Rectangle):
     """Class describing a square.

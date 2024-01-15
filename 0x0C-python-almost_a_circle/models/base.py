@@ -21,7 +21,6 @@ class Base:
             - id: id of the instance
         """
 
-        self.id is not None
         if id is not None:
             self.id = id
         else:
