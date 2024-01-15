@@ -2,6 +2,7 @@
 """Module rectangle.
 Create a Rectangle class, inheriting from Base.
 """
+import json
 from models.base import Base
 
 
