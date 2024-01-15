@@ -384,17 +384,6 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(r1_dictionary, excepted_output)
         self.assertEqual(type(excepted_output), dict)
 
-    def Test_desplay(self):
-        """Test for public method display."""
-
-        f = io.StringIO()
-        r1 = Rectangle(4, 5)
-        with contextlib.redirect_stdout(f):
-            r1.display()
-        s = f.getvalue()
-        res = "####\n####\n####\n####\n####\n"
-        self.assertEqual(s, res)
-
 
 if __name__ == "__main__":
     unittest.main()
