@@ -1,206 +1,134 @@
 #!/usr/bin/python3
-"""Unittest rectangle
-Test cases for the Rectangle class.
-Each test has the number of the task,
-and the number of the test for that task
-(i.e 'test_17_0' for the first test of task 17)
-"""
+"""Defines a class TestSquareMethods"""
 
 
+from unittest.mock import patch
 import unittest
+import json
+from io import StringIO
 from models.base import Base
 from models.rectangle import Rectangle
 from models.square import Square
 
 
-class TestSquare(unittest.TestCase):
-    """Test cases for the Rectangle class."""
+class TestSquareMethods(unittest.TestCase):
+    """ Defines tests for Square class """
 
     def setUp(self):
-        """ Runs for each test """
-
+        """ Method invoked for each test """
         Base._Base__nb_objects = 0
 
-    def test_square_id(self):
-        """Test id of square"""
+    def tearDown(self):
+        """ Cleans up after each test """
+        pass
 
-        s1 = Rectangle(10, 2)
-        self.assertEqual(s1.id, 1)
-        self.assertTrue(type(s1.id), int)
-
-        s2 = Rectangle(2, 10)
-        self.assertEqual(s2.id, 2)
-        self.assertTrue(type(s2.id), int)
-
-        s3 = Rectangle(210, 23, 0, 0, 12)
-        self.assertEqual(s3.id, 12)
-        self.assertTrue(type(s3.id), int)
-
-        s4 = Rectangle(10, 2, 0, 0, -2)
-        self.assertEqual(s4.id, -2)
-        self.assertTrue(type(s4.id), int)
-
-        s5 = Rectangle(11, 44)
-        self.assertEqual(s5.id, 3)
-        self.assertTrue(type(s5.id), int)
-
-    def test_square_attibute(self):
-        """Test square attributes"""
-
-        s1 = Square(5)
-        self.assertEqual(s1.size, 5)
+    def test_new_square(self):
+        """ Test new square """
+        s1 = Square(3)
+        s2 = Square(1, 2, 3, 4)
+        self.assertEqual(s1.size, 3)
+        self.assertEqual(s1.width, 3)
         self.assertEqual(s1.x, 0)
         self.assertEqual(s1.y, 0)
         self.assertEqual(s1.id, 1)
-
-        s2 = Square(2, 2)
-        self.assertEqual(s2.size, 2)
+        self.assertEqual(s2.size, 1)
+        self.assertEqual(s2.width, 1)
         self.assertEqual(s2.x, 2)
-        self.assertEqual(s2.y, 0)
-        self.assertEqual(s2.id, 2)
+        self.assertEqual(s2.y, 3)
+        self.assertEqual(s2.id, 4)
 
-        s3 = Square(3, 1, 3)
-        self.assertEqual(s3.size, 3)
-        self.assertEqual(s3.x, 1)
-        self.assertEqual(s3.y, 3)
-        self.assertEqual(s3.id, 3)
+    def test_attributes_1(self):
+        """ Test for width and x and y types"""
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            Square("1")
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
+            Square(1, "2")
+        with self.assertRaisesRegex(TypeError, "y must be an integer"):
+            Square(1, 2, "3")
 
-        s4 = Square(2, 6, 2, 10)
-        self.assertEqual(s4.size, 2)
-        self.assertEqual(s4.x, 6)
-        self.assertEqual(s4.y, 2)
-        self.assertEqual(s4.id, 10)
+    def test_attributes_2(self):
+        """ Test for width and height ranges"""
+        with self.assertRaisesRegex(ValueError, "width must be > 0"):
+            Square(-1)
+            Square(0)
+        with self.assertRaisesRegex(ValueError, "x must be >= 0"):
+            Square(1, -2)
+        with self.assertRaisesRegex(ValueError, "y must be >= 0"):
+            Square(1, 2, -3)
 
-    def test_square_TypeError_exception(self):
-        """Test attribute TypeError exception of square"""
-
+    def test_constructor_no_args(self):
+        """ Tests constructor with no args """
         with self.assertRaises(TypeError) as e:
-            s1 = Square()
-        Err_msg = (
-            "Square.__init__() missing 1 required positional"
-            +
-            " argument: 'size'"
-            )
-        self.assertEqual(Err_msg, str(e.exception))
+            r = Square()
+        s = "__init__() missing 1 required positional argument: 'size'"
+        self.assertEqual(str(e.exception), s)
 
+    def test_C_constructor_many_args(self):
+        """ Tests constructor with many arguments """
         with self.assertRaises(TypeError) as e:
-            s1 = Square(1, 2, 3, 4, 5, 6)
-        Err_msg = (
-            "Square.__init__() takes from 2 to 5"
-            +
-            " positional arguments but 7 were given"
-            )
-        self.assertEqual(Err_msg, str(e.exception))
+            r = Square(1, 2, 3, 4, 5)
+        s = "__init__() takes from 2 to 5 positional arguments but 6 \
+were given"
+        self.assertEqual(str(e.exception), s)
 
+    def test_is_Rectangle_instance(self):
+        """ Test Square is a Rectangle instance """
+        s1 = Square(1)
+        self.assertEqual(True, isinstance(s1, Rectangle))
+
+    def test_area(self):
+        """ Test area method """
+        s1 = Square(4)
+        self.assertEqual(s1.area(), 16)
+
+    def test_area_2(self):
+        """ Test area method after modifying size """
+        r1 = Square(4)
+        self.assertEqual(r1.area(), 16)
+        r1.size = 9
+        self.assertEqual(r1.area(), 81)
+
+    def test_area_no_args(self):
+        """ Test area method with no arguments"""
+        r = Square(5)
         with self.assertRaises(TypeError) as e:
-            s1 = Square("1", 3)
-        Err_msg = "width must be an integer"
-        self.assertEqual(Err_msg, str(e.exception))
+            Square.area()
+        s = "area() missing 1 required positional argument: 'self'"
+        self.assertEqual(str(e.exception), s)
 
+    def test_load_from_file(self):
+        """ Test load JSON file """
+        load_file = Square.load_from_file()
+        self.assertEqual(load_file, load_file)
+
+    def test_basic_display(self):
+        """ Test display without x and y """
+        s1 = Square(6)
+        result = "######\n######\n######\n######\n######\n######\n"
+        with patch('sys.stdout', new=StringIO()) as str_out:
+            s1.display()
+            self.assertEqual(str_out.getvalue(), result)
+
+    def test_display_no_args(self):
+        """ Test display method with no arguments """
+        r = Square(9)
         with self.assertRaises(TypeError) as e:
-            s1 = Square(1, "3")
-        Err_msg = "x must be an integer"
-        self.assertEqual(Err_msg, str(e.exception))
+            Square.display()
+        s = "display() missing 1 required positional argument: 'self'"
+        self.assertEqual(str(e.exception), s)
 
+    def test_str(self):
+        """ Test __str__ return value """
+        s1 = Square(3, 1, 3)
+        result = "[Square] (1) 1/3 - 3\n"
+        with patch('sys.stdout', new=StringIO()) as str_out:
+            print(s1)
+            self.assertEqual(str_out.getvalue(), result)
+
+    def test_str_no_args(self):
+        """ Tests __str__ method with no arguments """
+        r = Square(5, 2)
         with self.assertRaises(TypeError) as e:
-            s1 = Square(1, 4, "2")
-        Err_msg = "y must be an integer"
-        self.assertEqual(Err_msg, str(e.exception))
-
-        with self.assertRaises(TypeError) as e:
-            s1 = Square([2, 3, 4], 5, 5, 3)
-        Err_msg = "width must be an integer"
-        self.assertEqual(Err_msg, str(e.exception))
-
-        with self.assertRaises(TypeError) as e:
-            s1 = Square({"Name": 4}, 5)
-        Err_msg = "width must be an integer"
-        self.assertEqual(Err_msg, str(e.exception))
-
-        with self.assertRaises(TypeError) as e:
-            s1 = Square(4, 3, (3, 3), 1)
-        Err_msg = "y must be an integer"
-        self.assertEqual(Err_msg, str(e.exception))
-
-    def test_square_ValueError_exception(self):
-        """Test attribute ValueError exception of square"""
-
-        with self.assertRaises(ValueError) as e:
-            s1 = Square(-6, 3)
-        Err_msg = "width must be > 0"
-        self.assertEqual(Err_msg, str(e.exception))
-
-        with self.assertRaises(ValueError) as e:
-            s1 = Square(1, -3)
-        Err_msg = "x must be >= 0"
-        self.assertEqual(Err_msg, str(e.exception))
-
-        with self.assertRaises(ValueError) as e:
-            s1 = Square(0, 0)
-        Err_msg = "width must be > 0"
-        self.assertEqual(Err_msg, str(e.exception))
-
-        with self.assertRaises(ValueError) as e:
-            s1 = Square(3, 1, -1)
-        Err_msg = "y must be >= 0"
-        self.assertEqual(Err_msg, str(e.exception))
-
-    def test_size(self):
-        """Test size attribute of square"""
-
-        s1 = Square(5)
-        self.assertEqual(s1.size, 5)
-        s1.size = 10
-        self.assertEqual(s1.size, 10)
-
-    def test_size_TypeError_exception(self):
-        """Test TypeError exception of size attribute"""
-        s1 = Square(5)
-
-        with self.assertRaises(TypeError) as e:
-            s1.size = '5'
-        Err_msg = "width must be an integer"
-        self.assertEqual(Err_msg, str(e.exception))
-
-        with self.assertRaises(TypeError) as e:
-            s1 = Square('4')
-        Err_msg = "width must be an integer"
-        self.assertEqual(Err_msg, str(e.exception))
-
-    def test_size_ValueError_exception(self):
-        """Test TypeError ValueError of size attribute"""
-
-        s1 = Square(5)
-        with self.assertRaises(ValueError) as e:
-            s1 = Square(-3)
-        Err_msg = "width must be > 0"
-        self.assertEqual(Err_msg, str(e.exception))
-        with self.assertRaises(ValueError) as e:
-            s1.size = 0
-        Err_msg = "width must be > 0"
-        self.assertEqual(Err_msg, str(e.exception))
-        with self.assertRaises(ValueError) as e:
-            s1.size = -32
-        Err_msg = "width must be > 0"
-        self.assertEqual(Err_msg, str(e.exception))
-
-    def test_update(self):
-        """Test update method on Square."""
-
-        s1 = Square(5)
-        s1.update(10)
-        self.assertEqual(s1.id, 10)
-        s1.update(x=12)
-        self.assertEqual(s1.x, 12)
-        s1.update(size=7, id=89, y=1)
-        self.assertEqual(s1.size, 7)
-        self.assertEqual(s1.id, 89)
-        self.assertEqual(s1.y, 1)
-        s1.update()
-        self.assertEqual(s1.size, 7)
-        self.assertEqual(s1.id, 89)
-        self.assertEqual(s1.y, 1)
-
-
-if __name__ == "__main__":
-    unittest.main()
+            Square.__str__()
+        s = "__str__() missing 1 required positional argument: 'self'"
+        self.assertEqual(str(e.exception), s)
