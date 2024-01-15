@@ -10,6 +10,7 @@ from models.base import Base
 from models.rectangle import Rectangle
 from models.square import Square
 
+
 class TestSquare(unittest.TestCase):
     """Test cases for the Rectangle class."""
 
@@ -71,14 +72,20 @@ class TestSquare(unittest.TestCase):
 
         with self.assertRaises(TypeError) as e:
             s1 = Square()
-        Err_msg = ("Square.__init__() missing 1 required positional" +
-            " argument: 'size'")
+        Err_msg = (
+            "Square.__init__() missing 1 required positional"
+            +
+            " argument: 'size'"
+            )
         self.assertEqual(Err_msg, str(e.exception))
 
         with self.assertRaises(TypeError) as e:
             s1 = Square(1, 2, 3, 4, 5, 6)
-        Err_msg = ("Square.__init__() takes from 2 to 5" +
-                " positional arguments but 7 were given")
+        Err_msg = (
+            "Square.__init__() takes from 2 to 5"
+            +
+            " positional arguments but 7 were given"
+            )
         self.assertEqual(Err_msg, str(e.exception))
 
         with self.assertRaises(TypeError) as e:
@@ -97,7 +104,7 @@ class TestSquare(unittest.TestCase):
         self.assertEqual(Err_msg, str(e.exception))
 
         with self.assertRaises(TypeError) as e:
-            s1 = Square([2, 3, 4],5, 5, 3)
+            s1 = Square([2, 3, 4], 5, 5, 3)
         Err_msg = "width must be an integer"
         self.assertEqual(Err_msg, str(e.exception))
 
@@ -141,7 +148,7 @@ class TestSquare(unittest.TestCase):
         self.assertEqual(s1.size, 5)
         s1.size = 10
         self.assertEqual(s1.size, 10)
-    
+
     def test_size_TypeError_exception(self):
         """Test TypeError exception of size attribute"""
         s1 = Square(5)
