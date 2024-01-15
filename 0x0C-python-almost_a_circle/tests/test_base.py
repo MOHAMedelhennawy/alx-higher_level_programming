@@ -29,6 +29,7 @@ class TestBase_instantiation(unittest.TestCase):
 
     def test_passing_id(self):
         """Test base class passing id"""
+
         b1 = Base()
         self.assertEqual(b1.id, 1)
         b2 = Base(15)
