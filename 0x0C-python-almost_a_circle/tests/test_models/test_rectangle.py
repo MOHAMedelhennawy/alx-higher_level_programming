@@ -1,19 +1,26 @@
 #!/usr/bin/python3
+"""Unittest rectangle
+Test cases for the Rectangle class.
+Each test has the number of the task,
+and the number of the test for that task
+(i.e 'test_17_0' for the first test of task 17)
+"""
+
+
 import unittest
-from io import StringIO
+import io
+import contextlib
 import sys
 from models.base import Base
 from models.rectangle import Rectangle
+from models.square import Square
 
 
 class TestRectangle(unittest.TestCase):
+    """Test cases for the Rectangle class."""
+
     def setUp(self):
         Base._Base__nb_objects = 0
-        self.original_stdout = sys.stdout
-        sys.stdout = StringIO()
-
-    def tearDown(self):
-        sys.stdout = self.original_stdout
 
     def test_rectangle_id(self):
         """Test Rectangle id"""
@@ -376,6 +383,17 @@ class TestRectangle(unittest.TestCase):
         excepted_output = {'x': 5, 'y': 7, 'id': 4, 'height': 13, 'width': 10}
         self.assertEqual(r1_dictionary, excepted_output)
         self.assertEqual(type(excepted_output), dict)
+
+    def Test_desplay(self):
+        """Test for public method display."""
+
+        f = io.StringIO()
+        r1 = Rectangle(4, 5)
+        with contextlib.redirect_stdout(f):
+            r1.display()
+        s = f.getvalue()
+        res = "####\n####\n####\n####\n####\n"
+        self.assertEqual(s, res)
 
 
 if __name__ == "__main__":
