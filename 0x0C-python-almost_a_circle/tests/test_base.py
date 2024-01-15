@@ -11,7 +11,7 @@ from models.rectangle import Rectangle
 from models.square import Square
 
 
-class TestBase_instantiation(unittest.TestCase):
+class TestBase(unittest.TestCase):
     """Test class for Base class."""
 
     def setUp(self):
