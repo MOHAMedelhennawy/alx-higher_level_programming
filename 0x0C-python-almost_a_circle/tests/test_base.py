@@ -15,6 +15,8 @@ class TestBase(unittest.TestCase):
     """Test class for Base class."""
 
     def setUp(self):
+        """ Runs for each test """
+
         Base._Base__nb_objects = 0
 
     def test_None_id(self):

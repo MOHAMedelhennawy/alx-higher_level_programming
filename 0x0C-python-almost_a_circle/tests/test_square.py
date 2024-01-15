@@ -15,7 +15,10 @@ class TestSquare(unittest.TestCase):
     """Test cases for the Rectangle class."""
 
     def setUp(self):
+        """ Runs for each test """
+
         Base._Base__nb_objects = 0
+        self.new_base = Base(id=1)
 
     def test_square_id(self):
         """Test id of square"""

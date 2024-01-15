@@ -16,6 +16,8 @@ class TestRectangle(unittest.TestCase):
     """Test cases for the Rectangle class."""
 
     def setUp(self):
+        """ Runs for each test """
+
         Base._Base__nb_objects = 0
 
     def test_rectangle_id(self):
