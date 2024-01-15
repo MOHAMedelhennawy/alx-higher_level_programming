@@ -378,7 +378,7 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(r1_dictionary, excepted_output)
         self.assertEqual(type(excepted_output), dict)
 
-        r1.update(height = 13, id = 4, x = 5, y = 7, width = 10)
+        r1.update(height=13, id=4, x=5, y=7, width=10)
         r1_dictionary = r1.to_dictionary()
         excepted_output = {'x': 5, 'y': 7, 'id': 4, 'height': 13, 'width': 10}
         self.assertEqual(r1_dictionary, excepted_output)
