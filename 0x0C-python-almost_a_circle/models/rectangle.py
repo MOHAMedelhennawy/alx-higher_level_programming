@@ -1,12 +1,12 @@
 #!/usr/bin/python3
-"""Module Square.
-Create a Square class, inheriting from Base.
+"""Module rectangle.
+Create a Rectangle class, inheriting from Base.
 """
 from models.base import Base
 
 
-class Square(Base):
-    """Class describing a Square.
+class Rectangle(Base):
+    """Class describing a rectangle.
     Public instance methods:
         - area()
         - display()
@@ -16,7 +16,7 @@ class Square(Base):
     """
 
     def __init__(self, width, height, x=0, y=0, id=None):
-        """Initializes a Square instance.
+        """Initializes a Rectangle instance.
 
         Args:
             - __width: width
@@ -34,7 +34,7 @@ class Square(Base):
 
     @property
     def width(self):
-        """Retrieves width of Square"""
+        """Retrieves width of Rectangle"""
 
         return self.__width
 
@@ -51,7 +51,7 @@ class Square(Base):
 
     @property
     def height(self):
-        """Retrieves height of Square"""
+        """Retrieves height of Rectangle"""
 
         return self.__height
 
@@ -103,28 +103,28 @@ class Square(Base):
         self.__y = value
 
     def area(self):
-        """Returns the area value of the Square instance."""
+        """Returns the area value of the Rectangle instance."""
 
         return self.__width * self.__height
 
     def display(self):
-        """؛rints in stdout the Square instance with the character #"""
+        """؛rints in stdout the Rectangle instance with the character #"""
 
         print("\n" * self.__y, end="")
         print((" " * self.__x + "#" * self.__width + '\n')
               * self.__height, end="")
 
     def __str__(self):
-        """Returns Square representation"""
+        """Returns Rectangle representation"""
 
         return (
-            f"[Square] ({self.id}) {self.__x}/"
+            f"[Rectangle] ({self.id}) {self.__x}/"
             +
             f"{self.__y} - {self.__width}/{self.__height}"
             )
 
     def update(self, *args, **kwargs):
-        """Update the class Square attribute"""
+        """Update the class Rectangle attribute"""
 
         if not args:
             for key, value in kwargs.items():
@@ -135,7 +135,7 @@ class Square(Base):
                 setattr(self, var, value)
 
     def to_dictionary(self):
-        """Returns the dictionary representation of a Square"""
+        """Returns the dictionary representation of a Rectangle"""
 
         return {
             'id': self.id,
