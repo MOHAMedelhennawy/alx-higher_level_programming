@@ -48,13 +48,13 @@ class Base:
         Args:
             - list_objs: list of instances who inherits of Base
         """
-            
+
         list_data = (
             cls.to_json_string([obj.to_dictionary() for obj in list_objs])
             )
         file_name = cls.__name__ + ".json"
         with open(file_name, "w") as file_obj:
-            if list_objs is None:
+            if list_objs is None or list_objs == []:
                 file_obj.write([])
             else:
                 file_obj.write(list_data)
