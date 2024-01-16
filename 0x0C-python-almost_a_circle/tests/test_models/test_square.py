@@ -14,9 +14,6 @@ from io import StringIO
 from models.base import Base
 from models.rectangle import Rectangle
 from models.square import Square
-from models.base import Base
-from models.rectangle import Rectangle
-from models.square import Square
 
 
 class TestSquare(unittest.TestCase):
@@ -206,6 +203,144 @@ class TestSquare(unittest.TestCase):
         self.assertEqual(s1.size, 7)
         self.assertEqual(s1.id, 89)
         self.assertEqual(s1.y, 1)
+
+    def test_Update_TypeError_Exception(self):
+        """Test TypeError Exception msg of update method"""
+
+        s1 = Square(10, 10, 10)
+        with self.assertRaises(TypeError) as e:
+            s1.update(width=3, height="3")
+        Err_msg = "height must be an integer"
+        self.assertEqual(Err_msg, str(e.exception))
+
+        with self.assertRaises(TypeError) as e:
+            s1.update(height=3, width=[0, 4, 5])
+        Err_msg = "width must be an integer"
+        self.assertEqual(Err_msg, str(e.exception))
+
+        with self.assertRaises(TypeError) as e:
+            s1.update(height=3, width=3, x="True")
+        Err_msg = "x must be an integer"
+        self.assertEqual(Err_msg, str(e.exception))
+
+        with self.assertRaises(TypeError) as e:
+            s1.update(height=3, width=3, x=4, y="False")
+        Err_msg = "y must be an integer"
+        self.assertEqual(Err_msg, str(e.exception))
+
+        with self.assertRaises(TypeError) as e:
+            s1.update(height=3, width={"3": 3}, x=4, y=3)
+        Err_msg = "width must be an integer"
+        self.assertEqual(Err_msg, str(e.exception))
+
+        with self.assertRaises(TypeError) as e:
+            s1.update(height="String", width=3, x=4, y=3)
+        Err_msg = "height must be an integer"
+        self.assertEqual(Err_msg, str(e.exception))
+
+        with self.assertRaises(TypeError) as e:
+            s1.update(3, 3, "5")
+        Err_msg = "x must be an integer"
+        self.assertEqual(Err_msg, str(e.exception))
+
+        with self.assertRaises(TypeError) as e:
+            s1.update(3, "3", 5, 6)
+        Err_msg = "width must be an integer"
+        self.assertEqual(Err_msg, str(e.exception))
+
+        with self.assertRaises(TypeError) as e:
+            s1.update(3, 4, 5, "6", 0)
+        Err_msg = "y must be an integer"
+        self.assertEqual(Err_msg, str(e.exception))
+
+    def test_Update_VlaueError_Exception(self):
+        """Test update ValueError exception msg of update method"""
+
+        s1 = Square(10, 10, 10, 10)
+
+        with self.assertRaises(ValueError) as e:
+            s1.update(width=-3, height=3)
+        Err_msg = "width must be > 0"
+        self.assertEqual(Err_msg, str(e.exception))
+
+        with self.assertRaises(ValueError) as e:
+            s1.update(height=-3, width=3)
+        Err_msg = "height must be > 0"
+        self.assertEqual(Err_msg, str(e.exception))
+
+        with self.assertRaises(ValueError) as e:
+            s1.update(height=3, width=3, x=-3)
+        Err_msg = "x must be >= 0"
+        self.assertEqual(Err_msg, str(e.exception))
+
+        with self.assertRaises(ValueError) as e:
+            s1.update(height=3, width=3, x=4, y=-3)
+        Err_msg = "y must be >= 0"
+        self.assertEqual(Err_msg, str(e.exception))
+
+        with self.assertRaises(ValueError) as e:
+            s1.update(size=0, x=4, y=3)
+        Err_msg = "width must be > 0"
+        self.assertEqual(Err_msg, str(e.exception))
+
+        with self.assertRaises(ValueError) as e:
+            s1.update(size=-1, x=4, y=3)
+        Err_msg = "width must be > 0"
+        self.assertEqual(Err_msg, str(e.exception))
+
+        with self.assertRaises(ValueError) as e:
+            s1.update(height=0, width=3, x=4, y=3)
+        Err_msg = "height must be > 0"
+        self.assertEqual(Err_msg, str(e.exception))
+
+        with self.assertRaises(ValueError) as e:
+            s1.update(1, -4)
+        Err_msg = "width must be > 0"
+        self.assertEqual(Err_msg, str(e.exception))
+
+        with self.assertRaises(ValueError) as e:
+            s1.update(1, 4, 2, -3)
+        Err_msg = "y must be >= 0"
+        self.assertEqual(Err_msg, str(e.exception))
+
+    def test_str_(self):
+        """Test the str representation"""
+
+        s1 = Square(5)
+        result = str(s1)
+        expected_output = "[Square] (1) 0/0 - 5"
+        self.assertEqual(result, expected_output)
+
+        s1.size = 10
+        result = str(s1)
+        expected_output = "[Square] (1) 0/0 - 10"
+        self.assertEqual(result, expected_output)
+
+        with self.assertRaises(TypeError) as e:
+            s1.size = "10"
+        Err_msg = "width must be an integer"
+        self.assertEqual(Err_msg, str(e.exception))
+        
+        with self.assertRaises(ValueError) as e:
+            s1.size = -2
+        Err_msg = "width must be > 0"
+        self.assertEqual(Err_msg, str(e.exception))
+
+    def test_to_dictionary(self):
+        """Test returned the dictionary representation """
+
+        s1 = Square(10, 2, 1)
+        s1_dictionary = s1.to_dictionary()
+        excepted_output = {'id': 1, 'x': 2, 'size': 10, 'y': 1}
+        self.assertEqual(s1_dictionary, excepted_output)
+        self.assertEqual(type(excepted_output), dict)
+
+        s2 = Square(1, 1)
+        s2.update(**s1_dictionary)
+        s2_dictionary = s2.to_dictionary()
+        excepted_output = {'id': 1, 'size': 10, 'x': 2, 'y': 1}
+        self.assertEqual(s2_dictionary, excepted_output)
+        self.assertEqual(type(excepted_output), dict)
 
 
 if __name__ == "__main__":
