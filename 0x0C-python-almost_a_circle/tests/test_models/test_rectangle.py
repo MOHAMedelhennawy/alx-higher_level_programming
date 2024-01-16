@@ -7,8 +7,12 @@ and the number of the test for that task
 """
 
 
+from unittest.mock import patch
 import unittest
-import io
+import json
+from io import StringIO
+from models.base import Base
+from models.rectangle import Rectangle
 Base = __import__('models.base', globals(), locals(), ['Base'], 0).Base
 Rectangle = __import__('models.rectangle', globals(), locals(), ['Rectangle'], 0).Rectangle
 Square = __import__('models.square', globals(), locals(), ['Square'], 0).Square

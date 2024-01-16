@@ -5,6 +5,7 @@ Defines a Base class for other classes in the project.
 
 import json
 import os
+import csv
 
 
 class Base:
@@ -75,7 +76,7 @@ class Base:
         Args:
             - dictionary: used as **kwargs
 
-        Returns: instance created
+        Returns: instance created   
         """
 
         dummy = cls(1, 1) if cls.__name__ == 'Rectangle' else cls(1)
@@ -96,3 +97,14 @@ class Base:
                 for d in list_dicts:
                     lis.append(cls.create(**d))
         return lis
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        file_name = cls.__name__ + ".csv"
+
+
+        with open(file_name, "w") as file_obj:
+            data = csv.writer(file_obj, delimiter=",")
+        
+            for obj in list_objs:
+                data.writerow(obj.to_dictionary())
