@@ -19,17 +19,16 @@ class Rectangle {
       console.log(rectangle);
     }
   }
-  rotate() {
-    let x;
-    x = this.width;
+
+  rotate () {
+    const x = this.width;
     this.width = this.height;
     this.height = x;
   }
 
-  double() {
+  double () {
     this.width *= 2;
     this.height *= 2;
   }
-
 }
 module.exports = Rectangle;
