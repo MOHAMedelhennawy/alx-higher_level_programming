@@ -1,6 +1,5 @@
 #!/usr/bin/node
-const texts = ['C is fun', 'Python is cool', 'JavaScript is amazing'];
 
-for (const x in texts) {
-  console.log(texts[x]);
-}
+const Texts = ['C is fun', 'Python is cool', 'JavaScript is amazing'];
+
+for (const i in Texts) console.log(Texts[i]);
