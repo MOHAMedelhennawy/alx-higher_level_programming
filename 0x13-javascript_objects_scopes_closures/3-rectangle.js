@@ -8,15 +8,13 @@ class Rectangle {
     this.height = h;
   }
 
-  print () {
-    let rectangle;
-
-    for (let i = 0; i < this.height; i++) {
-      rectangle = '';
-      for (let j = 0; j < this.width; j++) {
-        rectangle += 'X';
+  print() {
+    for (let i = 0; i < x; i++) {
+      row = ''
+      for (let j = 0; j < h; j++) {
+        row += 'X'
       }
-      console.log(rectangle);
+      console.log(row)
     }
   }
 }
