@@ -9,26 +9,29 @@ class Rectangle {
   }
 
   print () {
-    let rectangle;
+    let row;
 
     for (let i = 0; i < this.height; i++) {
-      rectangle = '';
+      row = '';
       for (let j = 0; j < this.width; j++) {
-        rectangle += 'X';
+        row += 'X';
       }
-      console.log(rectangle);
+      console.log(row);
     }
   }
 
-  rotate () {
-    const x = this.width;
+  rotate() {
+    let temp;
+
+    temp = this.width;
     this.width = this.height;
-    this.height = x;
+    this.height = temp;
   }
 
   double () {
-    this.width *= 2;
     this.height *= 2;
+    this.width *= 2;
   }
 }
+
 module.exports = Rectangle;
