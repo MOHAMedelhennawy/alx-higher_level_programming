@@ -17,8 +17,9 @@ if __name__ == "__main__":
         port=3306,
     )
 
+    querey = "SELECT * FROM states WHERE name LIKE '{}'".format(argv[4])
     myCursor = myConn.cursor()
-    myCursor.execute("SELECT * FROM states WHERE name LIKE '{}'".format(argv[4]))
+    myCursor.execute(querey)
     result = myCursor.fetchall()
 
     for res in result:
