@@ -11,6 +11,7 @@ from sys import argv
 engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'
                        .format(argv[1], argv[2], argv[3]))
 
+Base.metadata.create_all(engine)
 Session = sessionmaker(bind=engine)
 session = Session()
 states = session.query(State).filter(State.name.like('%a%')).order_by(State.id).all()
