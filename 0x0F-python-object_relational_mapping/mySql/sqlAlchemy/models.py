@@ -15,6 +15,6 @@ class User(base):
     age = Column(Integer)
 
     def __str__(self):
-        return f'user_{self.id}: my name is {self.name}, i {self.age} years old'
+        return f'{self.name}: {self.age}'
 
 base.metadata.create_all(engine) # This command to execute the class and create the table in DB
