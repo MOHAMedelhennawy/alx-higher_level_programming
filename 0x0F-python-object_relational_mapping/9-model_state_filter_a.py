@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-script that lists all State objects from the database hbtn_0e_6_usa
+script that lists first State objects from the database hbtn_0e_6_usa
 using sqlalchemy
 """
 from model_state import Base, State
@@ -13,7 +13,7 @@ engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'
 
 Session = sessionmaker(bind=engine)
 session = Session()
+states = session.query(State).filter(State.name.like('%a%')).order_by(State.id).all()
 
-states = session.query(State).order_by(State.id).all()
 for state in states:
     print(f"{state.id}: {state.name}")
