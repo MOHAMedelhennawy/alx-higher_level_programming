@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """
-script that prints the State object with the name passed
-as argument from the database hbtn_0e_6_usa
+script that adds the State object “Louisiana”
+to the database hbtn_0e_6_usa
 """
 from model_state import Base, State
 from sqlalchemy import create_engine
@@ -15,12 +15,11 @@ if __name__ == "__main__":
         .format(argv[1], argv[2], argv[3])
                         )
 
-    Base.metadata.create_all(engine)
     Session = sessionmaker(bind=engine)
     session = Session()
-    states = session.query(State).filter(State.name == argv[4])
 
-    try:
-        print(states[0].id)
-    except IndexError:
-        print("Not found")
+    state = State()
+    state.name = 'Louisiana'
+
+    session.add(state)
+    session.commit()
