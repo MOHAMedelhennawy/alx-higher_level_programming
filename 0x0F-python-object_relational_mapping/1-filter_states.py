@@ -17,7 +17,7 @@ if __name__ == "__main__":
     )
 
     myCursor = myConn.cursor()
-    myCursor.execute("SELECT * FROM states WHERE name LIKE 'N%' ORDER BY id")
+    myCursor.execute("SELECT * FROM states WHERE name LIKE BINARY 'N%' ORDER BY id")
     rows = myCursor.fetchall()
 
     for row in rows:
