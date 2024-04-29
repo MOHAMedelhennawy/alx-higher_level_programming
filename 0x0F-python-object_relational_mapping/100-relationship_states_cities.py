@@ -1,8 +1,5 @@
 #!/usr/bin/python3
-"""
-script that deletes all State objects with a name containing
-the letter a from the database hbtn_0e_6_usa
-"""
+
 from relationship_state import Base, State
 from relationship_city import City
 from sqlalchemy import create_engine

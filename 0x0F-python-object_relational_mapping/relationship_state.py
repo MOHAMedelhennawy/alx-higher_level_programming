@@ -1,7 +1,5 @@
 #!/usr/bin/python3
-"""
-Create simple table using sqlAlchmey
-"""
+
 from sqlalchemy.orm import declarative_base, relationship
 from sqlalchemy import Column, Integer, String
 
