@@ -1,7 +1,8 @@
 #!/usr/bin/python3
 """
-script that deletes all State objects with a name containing
-the letter a from the database hbtn_0e_6_usa
+script that prints all City objects from the database hbtn_0e_14_usa,
+Results must be display as they are in the example below:
+(<state name>: (<city id>) <city name>)
 """
 from model_state import Base, State
 from model_city import City
@@ -20,9 +21,9 @@ if __name__ == "__main__":
     session = Session()
 
     filtered_cities = (
-        session.query(City)
-        .join(State).
-        filter(City.state_id == State.id)
+        session.query(City, State)
+        .filter(City.state_id == State.id)
         )
-    for city in filtered_cities:
-        print("{}: ({}) {}".format(city.state.name, city.id, city.name))
+
+    for city, state in filtered_cities:
+        print("{}: ({}) {}".format(state.name, city.id, city.name))
