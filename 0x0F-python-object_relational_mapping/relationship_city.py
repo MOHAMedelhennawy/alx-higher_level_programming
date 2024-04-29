@@ -6,6 +6,7 @@ from sqlalchemy.orm import declarative_base, relationship
 from sqlalchemy import Column, Integer, String, ForeignKey
 from relationship_state import Base
 
+
 class City(Base):
     '''
     Table has two columns id, name
@@ -14,5 +15,3 @@ class City(Base):
     id = Column(Integer(), primary_key=True, autoincrement=True)
     name = Column(String(128), nullable=False)
     state_id = Column(Integer, ForeignKey('states.id'))
-
-    # state = relationship("State", back_populates='cities')
