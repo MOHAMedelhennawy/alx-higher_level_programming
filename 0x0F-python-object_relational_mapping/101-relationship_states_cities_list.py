@@ -23,5 +23,7 @@ if __name__ == "__main__":
     all_state = session.query(State)
     for state in all_state:
         print("{}: {}".format(state.id, state.name))
-        for city in session.query(City).join(State).where(City.state_id == state.id):
+        for city in (session.query(City)
+                     .join(State)
+                     .where(City.state_id == state.id)):
             print("\t{}: {}".format(city.id, city.name))
