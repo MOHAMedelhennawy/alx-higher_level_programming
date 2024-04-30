@@ -1,10 +1,10 @@
 #!/usr/bin/python3
-from sqlalchemy import Column, Integer, String, text
-from sqlalchemy.orm import relationship
-from sqlalchemy.ext.declarative import declarative_base
 """
     Module that performs creates a States class based off of Base.
 """
+from sqlalchemy import Column, Integer, String, text
+from sqlalchemy.orm import relationship
+from sqlalchemy.ext.declarative import declarative_base
 
 Base = declarative_base()
 
