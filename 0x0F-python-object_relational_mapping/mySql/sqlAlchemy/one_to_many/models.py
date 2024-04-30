@@ -8,7 +8,6 @@ Base = declarative_base()
 
 class User(Base):
     __tablename__ = 'users'
-    id = Column(Integer, primary_key=True)
     name = Column(String(40), nullable=False)
     post = relationship("Post", back_populates='user',
                         cascade='all, delete, save-update')
