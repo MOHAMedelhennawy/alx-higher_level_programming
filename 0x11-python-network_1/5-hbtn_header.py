@@ -1,9 +1,10 @@
 #!/usr/bin/python3
 """ Python script that fetches https://alx-intranet.hbtn.io/status
 """
-import requests, sys
+import requests
+from sys import argv
 
 if __name__ == "__main__":
-    url = sys.argv[1]
+    url = argv[1]
     r = requests.get(url)
     print(r.headers['X-Request-Id'])
