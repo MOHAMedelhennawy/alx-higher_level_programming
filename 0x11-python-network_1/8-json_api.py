@@ -14,7 +14,7 @@ if __name__ == "__main__":
     payload = {'q': q}
 
     r = requests.post(url, data=payload)
-    
+
     try:
         response = r.json()
         if response == {}:
