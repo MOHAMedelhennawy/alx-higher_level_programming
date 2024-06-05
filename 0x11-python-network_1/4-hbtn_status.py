@@ -3,7 +3,8 @@
 """
 import requests
 
-r = requests.get('https://alx-intranet.hbtn.io/status')
-print("Body response:\n\
-    - type: {}\n\
-    - content: {}".format(type(r.text), r.text))
+if __name__ == "__main__":
+    r = requests.get('https://alx-intranet.hbtn.io/status')
+    print("Body response:")
+    print("    - type: {}".format(type(r.text)))
+    print("    - content: {}".format(r.text))
